@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile
+from fastapi.middleware.cors import CORSMiddleware 
 from typing import Optional, Union
 from pydantic import BaseModel
 import io
@@ -7,6 +8,17 @@ import easyocr
 
 app = FastAPI()
 ocr_reader = easyocr.Reader(['en', 'ch_tra'])
+
+origins = ['*']
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+) 
+
 
 @app.get("/")
 async def read_root():
