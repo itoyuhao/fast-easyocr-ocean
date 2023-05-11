@@ -1,0 +1,86 @@
+<head>
+    <title>名片就是網站！</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .file-upload:hover {
+            background-color: #45a049;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .upload-btn {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .upload-btn input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .upload-btn input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* 新增的CSS */
+        .file-selected .file-upload {
+            background-color: #277da1;
+        }
+    </style>
+</head>
+<body>
+    <h1>名片就是網站！</h1>
+    <form action="/easyocr" enctype="multipart/form-data" method="post" class="upload-form">
+        <label for="files" class="file-upload">選擇檔案</label>
+        <input id="files" name="files" type="file" multiple>
+        <div class="upload-btn">
+            <input type="submit" value="上傳">
+        </div>
+    </form>
+    <script>
+        // 在提交後跳轉頁面
+        document.querySelector('.upload-form').addEventListener('submit', function() {
+            // 在此處添加跳轉邏輯，例如:
+            // window.location.href = '新頁面的URL';
+        });
+
+        // 隱藏原生選擇檔案按鈕
+        document.getElementById('files').style.display = 'none';
+
+        // 監聽選擇檔案事件
+        document.getElementById('files').addEventListener('change', function() {
+            var fileUploadLabel = document.querySelector('.file-upload');
+            if (this.files && this.files.length > 0) {
+                fileUploadLabel.parentNode.classList.add('file-selected'); // 修改這一行
+            } else {
+                fileUploadLabel.parentNode.classList.remove('file-selected'); // 修改這一行
+            }
+        });
+    </script>
+</body>
