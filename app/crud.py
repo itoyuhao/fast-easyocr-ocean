@@ -23,6 +23,10 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 
+def get_card(db: Session, owner_id: int):
+    return db.query(models.Card).filter(models.Card.owner_id == owner_id).first()
+
+
 def get_cards(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Card).offset(skip).limit(limit).all()
 

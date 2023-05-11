@@ -107,6 +107,14 @@ def delete_all_cards(user_id: int, db: Session = Depends(get_db)):
     return cards
 
 
+@app.get("/parse/{user_id}")
+async def parse(user_id: int, db: Session = Depends(get_db)):
+    result = crud.get_card(owner_id=user_id, db=db)
+    if result:
+        return {"result" : str(result)}
+    raise HTTPException(status_code=400, detail="Card not found")
+
+
 # ocr-related api
 @app.post("/easyocr")
 async def ocr_model(db: Session = Depends(get_db), files: Union[UploadFile, None] = None):
@@ -124,10 +132,11 @@ async def ocr_model(db: Session = Depends(get_db), files: Union[UploadFile, None
 
 
 @app.get("/upload")
-async def main():
+async def upload():
     html = codecs.open("frontend/upload.html", "r").read()
 
     return HTMLResponse(content=html)
+
 
 
 if __name__ == "__main__":

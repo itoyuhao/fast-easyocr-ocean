@@ -1,4 +1,6 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, LargeBinary
+from sqlalchemy import  Column, ForeignKey
+from sqlalchemy import Boolean, Integer, String, LargeBinary, DateTime
+from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 from database import Base
 
@@ -9,6 +11,7 @@ class User(Base):
     name = Column(String, unique=True, index=True)
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
+    created_date = Column(DateTime(timezone=True), default=func.now())
 
     cards = relationship("Card", back_populates="owner")
 
@@ -20,5 +23,6 @@ class Card(Base):
     description = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
     card_byte = Column(LargeBinary)
+    created_date = Column(DateTime(timezone=True), server_default=func.now())
 
     owner = relationship("User", back_populates="cards")
