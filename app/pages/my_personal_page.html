@@ -1,0 +1,119 @@
+中文姓名：陳昱蒙
+公司電話：(02) 2755-7666
+公司傳真：(02) 2722-6629
+公司名稱：祟上市全直嘗信義房屋
+中文地址：台北市信義區信義路五段100號
+個人手機號碼：0929-822-336
+客訴專線：(0800)211-922
+電子郵件：s444880os1ny1.c07.1/
+統一編號：22354940
+業務內容：未提及
+社群媒體帳號或 ID：未提及 
+英文名字：未提及
+
+根據以上資訊，可以製作一個以陳昱蒙為主角的公司網站，介紹祟上市全直嘗信義房屋的業務和地址，並提供客訴專線、電子郵件等聯絡方式。網站可以使用紅色和藍色作為主要色調，並加入動態元素，提高設計感和互動性。以下是網站的程式碼範例：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+        <title>陳昱蒙公司網站</title>
+        <style>
+                body {
+                        background-color: #f2f2f2;
+                }
+                h1 {
+                        color: #ff0000;
+                        text-align: center;
+                }
+                nav {
+                        background-color: #0077cc;
+                        padding: 10px;
+                        text-align: center;
+                }
+                nav a {
+                        color: #ffffff;
+                        margin: 0 10px;
+                        text-decoration: none;
+                }
+                nav a:hover {
+                        border-bottom: 2px solid #ffffff;
+                }
+                section {
+                        background-color: #ffffff;
+                        border: 1px solid #cccccc;
+                        border-radius: 10px;
+                        margin: 10px;
+                        padding: 10px;
+                }
+                footer {
+                        background-color: #0077cc;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 10px;
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                }
+                #map {
+                        height: 300px;
+                        width: 100%;
+                }
+        </style>
+</head>
+<body>
+        <header>
+                <h1>祟上市全直嘗信義房屋</h1>
+        </header>
+        <nav>
+                <a href="#about">公司簡介</a>
+                <a href="#service">業務介紹</a>
+                <a href="#contact">聯繫方式</a>
+        </nav>
+        <section id="about">
+                <h2>公司簡介</h2>
+                <p>祟上市全直嘗信義房屋成立於20XX年，致力於提供高品質的房地產交易服務。公司擁有專業的房地產代理和經紀人，為客戶提供最優質的房地產經紀服務。</p>
+        </section>
+        <section id="service">
+                <h2>業務介紹</h2>
+                <ul>
+                        <li>房屋買賣</li>
+                        <li>租屋</li>
+                        <li>評估報告</li>
+                        <li>土地拍賣</li>
+                        <li>物業管理</li>
+                </ul>
+                <p>歡迎聯繫我們獲取更多業務資訊。</p>
+        </section>
+        <section id="contact">
+                <h2>聯繫方式</h2>
+                <p>電話：(02) 2755-7666</p>
+                <p>地址：台北市信義區信義路五段100號</p>
+                <p>傳真：(02) 2722-6629</p>
+                <p>行動電話：0929-822-336</p>
+                <p>客訴專線：(0800)211-922</p>
+                <p>電子郵件：s444880os1ny1.c07.1/</p>
+                <div id="map"></div>
+                <script>
+                        function initMap() {
+                                var myLatLng = {lat: 25.034280, lng: 121.568264};
+
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                        zoom: 16,
+                                        center: myLatLng
+                                });
+
+                                var marker = new google.maps.Marker({
+                                        position: myLatLng,
+                                        map: map,
+                                        title: '祟上市全直嘗信義房屋'
+                                });
+                        }
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+        </section>
+        <footer>
+                <p>© 20XX 陳昱蒙公司 All Rights Reserved.</p>
+        </footer>
+</body>
+</html>
