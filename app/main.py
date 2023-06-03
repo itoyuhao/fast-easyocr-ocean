@@ -1,8 +1,9 @@
 import os, sys
+import time
 
 from typing import Union, List
 
-from fastapi import Depends, FastAPI, UploadFile, HTTPException
+from fastapi import Depends, FastAPI, UploadFile, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
@@ -20,9 +21,8 @@ from database import SessionLocal, engine
 REPO_DIR = os.path.dirname(os.getcwd())
 sys.path.append(REPO_DIR)
 
-from utils.timer import timed
 
-
+# Will create tables into database
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
@@ -38,8 +38,15 @@ app.add_middleware(
     allow_headers=["*"],
 ) 
 
+@app.middleware("http")
+async def add_process_time_header(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    print("Time took to process the request and return response is {} sec".format(time.time() - start_time))
+    return response
+
+
 # welcome page(root)
-@timed
 @app.get("/")
 async def read_root():
     return {"Hello": "Hello there, welcome to the website. Please have a look."}

@@ -3,7 +3,9 @@ import time
 
 from functools import wraps
 
-logging.basicConfig()
+logging.basicConfig(filename="std.log", 
+					format='%(asctime)s %(message)s', 
+					filemode='a')
 logger = logging.getLogger("my-logger")
 logger.setLevel(logging.DEBUG)
 
